@@ -16,6 +16,7 @@ from django.db.models import Q
 
 #Вывод постов
 def post_list(request):
+#Поисковик
 	query_search = request.GET.get('search', '')
 
 	if query_search:
@@ -23,10 +24,9 @@ def post_list(request):
 	else:
 		posts = Post.objects.all()
 
-	paginator = Paginator(posts, 5)
+	paginator = Paginator(posts, 2)
 
-
-
+#Пагинация
 	page_number_web = request.GET.get('page', 1)
 	page = paginator.get_page(page_number_web)
 
